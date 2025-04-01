@@ -1,4 +1,4 @@
-package smartshopMangement;
+package smartshopManagement;
 
 public class SalesRecord {
 
