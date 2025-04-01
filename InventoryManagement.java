@@ -1,7 +1,9 @@
 package smartshopManagement;
+import java.util.ArrayList;
 
 public class InventoryManagement {
-    public void updateStock() {
-
+    private ArrayList<Product> stock;
+    public InventoryManagement() {
+        this.stock = new ArrayList<>();
     }
 }
