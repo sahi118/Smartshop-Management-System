@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-package smartshopMangement;
+package smartshopManagement;
 
 public class Main
 {

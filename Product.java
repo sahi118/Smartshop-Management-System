@@ -1,6 +1,4 @@
-package smartshopMangement;
-
-
+package smartshopManagement;
 
 public class Product {
     String name;
