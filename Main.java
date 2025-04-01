@@ -1,7 +1,8 @@
-import javax.swing.*
+import javax.swing.*;
 
 package smartshopMangement;
 
-public class Main {
+public class Main
+{
 
 }
