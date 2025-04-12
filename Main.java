@@ -13,9 +13,29 @@ public class Main
 		JFrame projManagement = new JFrame();
 		
 		JButton btn1 = new JButton("Manage Inventory");
+		btn1.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn1.setForeground(Color.WHITE);
+		btn1.setBackground(Color.DARK_GRAY);
+		btn1.setFocusPainted(false);
+		btn1.setBorderPainted(true);
 		JButton btn2 = new JButton("Record Sales");
+		btn2.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn2.setForeground(Color.WHITE);
+		btn2.setBackground(Color.DARK_GRAY);
+		btn2.setFocusPainted(false);
+		btn2.setBorderPainted(true);
 		JButton btn3 = new JButton("Generate Report");
+		btn3.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn3.setForeground(Color.WHITE);
+		btn3.setBackground(Color.DARK_GRAY);
+		btn3.setFocusPainted(false);
+		btn3.setBorderPainted(true);
 		JButton buttonExit = new JButton("Quit");
+		buttonExit.setFont(new Font("Tahoma",Font.BOLD, 15));
+		buttonExit.setForeground(Color.WHITE);
+		buttonExit.setBackground(Color.DARK_GRAY);
+		buttonExit.setFocusPainted(false);
+		buttonExit.setBorderPainted(true);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(5,1,50,10));
@@ -59,8 +79,8 @@ public class Main
 
 		panel1.add(managementTitle);
 		panel1.add(productsScrollPane);
-		panel1.add(whitespace);
-		panel1.add(whitespace);
+		//panel1.add(whitespace);
+		//panel1.add(whitespace);
 		panel1.add(addProduct);
 		panel1.add(btn4);
 		panel1.add(updateProduct);
