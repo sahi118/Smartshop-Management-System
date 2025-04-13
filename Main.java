@@ -1,9 +1,8 @@
 package smartshopManagement;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.*;
-import java.util.ArrayList;
 
 public class Main
 {
@@ -49,10 +48,33 @@ public class Main
 		panel.add(btn3);
 		panel.add(buttonExit);
 
-		JButton btn4 = new JButton("Add Product");
+		JButton btn4 = new JButton("Add Product     ");
+		btn4.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn4.setPreferredSize(new Dimension(200, 200));
+		btn4.setForeground(Color.WHITE);
+		btn4.setBackground(Color.DARK_GRAY);
+		btn4.setFocusPainted(false);
+		btn4.setBorderPainted(true);
 		JButton btn5 = new JButton("Update Product");
-		JButton btn6 = new JButton("Delete Product");
+		btn5.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn5.setPreferredSize(new Dimension(200, 200));
+		btn5.setForeground(Color.WHITE);
+		btn5.setBackground(Color.DARK_GRAY);
+		btn5.setFocusPainted(false);
+		btn5.setBorderPainted(true);
+		JButton btn6 = new JButton("Delete Product ");
+		btn6.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn6.setPreferredSize(new Dimension(200, 200));
+		btn6.setForeground(Color.WHITE);
+		btn6.setBackground(Color.DARK_GRAY);
+		btn6.setFocusPainted(false);
+		btn6.setBorderPainted(true);
 		JButton btn7 = new JButton("Back");
+		btn7.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btn7.setForeground(Color.WHITE);
+		btn7.setBackground(Color.DARK_GRAY);
+		btn7.setFocusPainted(false);
+		btn7.setBorderPainted(true);
 		JButton whitespace = new JButton("");
 
 		JTextField addProduct = new JTextField();
@@ -66,7 +88,7 @@ public class Main
 		String stockList = inventoryManagement.printStock();
 
 		JPanel panel1 = new JPanel();
-		panel1.setLayout(new GridLayout(5,2,50,10));
+		panel1.setLayout(new BorderLayout());
 		JLabel managementTitle = new JLabel("Title");
 		JTextArea products = new JTextArea();
 		products.setText(stockList);
@@ -75,19 +97,29 @@ public class Main
 		managementTitle.setText("Product Management Centre");
 		managementTitle.setHorizontalAlignment(JLabel.CENTER);
 		managementTitle.setFont(new Font("Tahoma",Font.BOLD, 15));
+		
+		panel1.add(managementTitle, BorderLayout.NORTH);
+		JPanel TextPanel = new JPanel();
+		BoxLayout boxlayout1 = new BoxLayout(TextPanel, BoxLayout.Y_AXIS); 
+		TextPanel.setLayout(boxlayout1);
+		TextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		TextPanel.add(productsScrollPane);
+		TextPanel.add(addProduct);
+		TextPanel.add(updateProduct);
 
-
-		panel1.add(managementTitle);
-		panel1.add(productsScrollPane);
 		//panel1.add(whitespace);
 		//panel1.add(whitespace);
-		panel1.add(addProduct);
-		panel1.add(btn4);
-		panel1.add(updateProduct);
-		panel1.add(btn5);
-		panel1.add(btn6);
-		panel1.add(btn7);
 
+		JPanel ButtonPanel = new JPanel();
+		BoxLayout boxlayout2 = new BoxLayout(ButtonPanel, BoxLayout.Y_AXIS); 
+		ButtonPanel.setLayout(boxlayout2);
+		ButtonPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		ButtonPanel.add(btn4);
+		ButtonPanel.add(btn5);
+		ButtonPanel.add(btn6);
+		panel1.add(TextPanel, BorderLayout.CENTER);
+		panel1.add(ButtonPanel, BorderLayout.EAST);
+		panel1.add(btn7, BorderLayout.SOUTH);
 
 		menu.add(panel);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,34 +130,46 @@ public class Main
 		projManagement.add(panel1);
 		projManagement.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		projManagement.setTitle("Smart Shop Management System");
-		projManagement.setSize(1270,1080);
+		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
-
 
 		menu.setVisible(true);
 		projManagement.setVisible(false);
 
-		buttonExit.addActionListener(new ActionListener(){
+		buttonExit.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e){
+			public void actionPerformed(ActionEvent e)
+			{
 				JFrame QuitFrame = new JFrame("Quit");
 				if (JOptionPane.showConfirmDialog(QuitFrame,"Confirm if you Want to Quit","Quit?",JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
             	System.exit(0);}
 		});
 		btn1.addActionListener(new ActionListener(){
 			@Override
-			public void actionPerformed(ActionEvent e){
+			public void actionPerformed(ActionEvent e)
+			{
 				projManagement.setVisible(true);
 				menu.setVisible(false);
 			}
 		});
-		btn4.addActionListener(new ActionListener(){
+		btn4.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e){
+			public void actionPerformed(ActionEvent e)
+			{
 
+			}
+		});
+		btn7.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				projManagement.setVisible(false);
+				menu.setVisible(true);
 			}
 		});
 	}
 		
-	
 }
