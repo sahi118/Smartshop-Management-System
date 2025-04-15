@@ -168,12 +168,17 @@ public class Main
 				String productName = addProductName.getText();
 				String productPrice = addProductPrice.getText();
 				String productQuantity = addProductQuantity.getText();
+				if(productName.length()>1 || !productPrice.isEmpty() || !productQuantity.isEmpty()) {
+					Product product = new Product(productName, productPrice, productQuantity);
 
-				Product product = new Product(productName, productPrice, productQuantity);
+					inventoryManagement.addProduct(product);
+					String stockList = inventoryManagement.printStock();
+					products.setText(stockList);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please enter all the fields");
+				}
 
-				inventoryManagement.addProduct(product);
-				String stockList = inventoryManagement.printStock();
-				products.setText(stockList);
+
 			}
 		});
 		btn7.addActionListener(new ActionListener()
