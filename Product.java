@@ -2,16 +2,16 @@ package smartshopManagement;
 
 public class Product {
     String name;
-    Float price;
-    Float quantity;
+    String price;
+    String quantity;
 
-    public Product(String name, Float price, Float quantity) {
+    public Product(String name, String price, String quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
     @Override
     public String toString() {
-        return name + " | £" + String.format("%.2f", price) + " | Qty: " + quantity;
+        return name + " | £" + ( price) + " | Qty: " + quantity;
     }
 }

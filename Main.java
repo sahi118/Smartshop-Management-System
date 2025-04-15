@@ -37,7 +37,7 @@ public class Main
 		buttonExit.setBorderPainted(true);
 		
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,1,50,10));
+		panel.setLayout(new GridLayout(5,3,50,10));
 		JLabel labelTitle = new JLabel("Title");
 		labelTitle.setText("Smart Shop Management System");
 		labelTitle.setHorizontalAlignment(JLabel.CENTER);
@@ -77,21 +77,22 @@ public class Main
 		btn7.setBorderPainted(true);
 		JButton whitespace = new JButton("");
 
-		JTextField addProduct = new JTextField();
+		JTextField addProductName = new JTextField();
+		JTextField addProductPrice = new JTextField();
+		JTextField addProductQuantity = new JTextField();
 		JTextField updateProduct = new JTextField();
 
 		InventoryManagement inventoryManagement = new InventoryManagement();
 		inventoryManagement.printStock();
 
-		Product product = new Product("Eggs", 5f, 10f);
-		inventoryManagement.addProduct(product);
-		String stockList = inventoryManagement.printStock();
-
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new BorderLayout());
 		JLabel managementTitle = new JLabel("Title");
+		JLabel productName = new JLabel("Product Name");
+		JLabel productPrice = new JLabel("Product Price");
+		JLabel productQuantity = new JLabel("Product Quantity");
 		JTextArea products = new JTextArea();
-		products.setText(stockList);
+		products.setPreferredSize(new Dimension(100, 100));
 		products.setEditable(false);
 		JScrollPane productsScrollPane = new JScrollPane(products);
 		managementTitle.setText("Product Management Centre");
@@ -99,12 +100,17 @@ public class Main
 		managementTitle.setFont(new Font("Tahoma",Font.BOLD, 15));
 		
 		panel1.add(managementTitle, BorderLayout.NORTH);
+		panel1.add(productName, BorderLayout.WEST);
+		panel1.add(productPrice, BorderLayout.WEST);
+		panel1.add(productQuantity, BorderLayout.WEST);
 		JPanel TextPanel = new JPanel();
 		BoxLayout boxlayout1 = new BoxLayout(TextPanel, BoxLayout.Y_AXIS); 
 		TextPanel.setLayout(boxlayout1);
 		TextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
 		TextPanel.add(productsScrollPane);
-		TextPanel.add(addProduct);
+		TextPanel.add(addProductName);
+		TextPanel.add(addProductPrice);
+		TextPanel.add(addProductQuantity);
 		TextPanel.add(updateProduct);
 
 		//panel1.add(whitespace);
@@ -133,6 +139,7 @@ public class Main
 		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
 
+
 		menu.setVisible(true);
 		projManagement.setVisible(false);
 
@@ -158,7 +165,15 @@ public class Main
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				String productName = addProductName.getText();
+				String productPrice = addProductPrice.getText();
+				String productQuantity = addProductQuantity.getText();
 
+				Product product = new Product(productName, productPrice, productQuantity);
+
+				inventoryManagement.addProduct(product);
+				String stockList = inventoryManagement.printStock();
+				products.setText(stockList);
 			}
 		});
 		btn7.addActionListener(new ActionListener()
@@ -168,6 +183,12 @@ public class Main
 			{
 				projManagement.setVisible(false);
 				menu.setVisible(true);
+			}
+		});
+		btn5.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
 			}
 		});
 	}
