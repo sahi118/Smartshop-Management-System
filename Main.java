@@ -80,7 +80,7 @@ public class Main
 		JTextField addProductName = new JTextField();
 		JTextField addProductPrice = new JTextField();
 		JTextField addProductQuantity = new JTextField();
-		JTextField updateProduct = new JTextField();
+		//JTextField updateProduct = new JTextField();
 
 		InventoryManagement inventoryManagement = new InventoryManagement();
 		inventoryManagement.printStock();
@@ -88,6 +88,7 @@ public class Main
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new BorderLayout());
 		JLabel managementTitle = new JLabel("Title");
+		JLabel productList = new JLabel("Product List");
 		JLabel productName = new JLabel("Product Name");
 		JLabel productPrice = new JLabel("Product Price");
 		JLabel productQuantity = new JLabel("Product Quantity");
@@ -107,11 +108,15 @@ public class Main
 		BoxLayout boxlayout1 = new BoxLayout(TextPanel, BoxLayout.Y_AXIS); 
 		TextPanel.setLayout(boxlayout1);
 		TextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		TextPanel.add(productList);
 		TextPanel.add(productsScrollPane);
+		TextPanel.add(productName);
 		TextPanel.add(addProductName);
+		TextPanel.add(productPrice);
 		TextPanel.add(addProductPrice);
+		TextPanel.add(productQuantity);
 		TextPanel.add(addProductQuantity);
-		TextPanel.add(updateProduct);
+		//TextPanel.add(updateProduct);
 
 		//panel1.add(whitespace);
 		//panel1.add(whitespace);
@@ -123,6 +128,7 @@ public class Main
 		ButtonPanel.add(btn4);
 		ButtonPanel.add(btn5);
 		ButtonPanel.add(btn6);
+
 		panel1.add(TextPanel, BorderLayout.CENTER);
 		panel1.add(ButtonPanel, BorderLayout.EAST);
 		panel1.add(btn7, BorderLayout.SOUTH);
