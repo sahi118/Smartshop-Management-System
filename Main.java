@@ -171,15 +171,31 @@ public class Main
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				String productName = addProductName.getText();
-				String productPrice = addProductPrice.getText();
-				String productQuantity = addProductQuantity.getText();
+				if (addProductName.getText().isEmpty())
+				{
+					JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
+				}
+				else if (addProductPrice.getText().isEmpty())
+				{
+					JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
+				}
+				else if(addProductQuantity.getText().isEmpty())
+				{
+					JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
+				}
+				else
+				{
+					String productName = addProductName.getText();
+					String productPrice = addProductPrice.getText();
+					String productQuantity = addProductQuantity.getText();
 
-				Product product = new Product(productName, productPrice, productQuantity);
+					Product product = new Product(productName, productPrice, productQuantity);
 
-				inventoryManagement.addProduct(product);
-				String stockList = inventoryManagement.printStock();
-				products.setText(stockList);
+					inventoryManagement.addProduct(product);
+					String stockList = inventoryManagement.printStock();
+					products.setText(stockList);
+				}
+					
 			}
 		});
 		btn7.addActionListener(new ActionListener()
