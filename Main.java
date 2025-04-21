@@ -171,22 +171,6 @@ public class Main
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-<<<<<<< HEAD
-				String productName = addProductName.getText();
-				String productPrice = addProductPrice.getText();
-				String productQuantity = addProductQuantity.getText();
-				if(productName.length()>1 || !productPrice.isEmpty() || !productQuantity.isEmpty()) {
-					Product product = new Product(productName, productPrice, productQuantity);
-
-					inventoryManagement.addProduct(product);
-					String stockList = inventoryManagement.printStock();
-					products.setText(stockList);
-				} else {
-					JOptionPane.showMessageDialog(null, "Please enter all the fields");
-				}
-
-
-=======
 				if (addProductName.getText().isEmpty())
 				{
 					JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
@@ -212,7 +196,6 @@ public class Main
 					products.setText(stockList);
 				}
 					
->>>>>>> 5da6cc8244d9bf5d8404d06a5814d7906d32989a
 			}
 		});
 		btn7.addActionListener(new ActionListener()
