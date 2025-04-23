@@ -3,9 +3,9 @@ package smartshopManagement;
 public class Product {
     String name;
     String price;
-    String quantity;
+    int quantity;
 
-    public Product(String name, String price, String quantity) {
+    public Product(String name, String price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;

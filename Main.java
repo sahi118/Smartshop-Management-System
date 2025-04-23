@@ -10,6 +10,7 @@ public class Main
 	{
 		JFrame menu = new JFrame();
 		JFrame projManagement = new JFrame();
+		JFrame recordSales =  new JFrame();
 		
 		JButton btn1 = new JButton("Manage Inventory");
 		btn1.setFont(new Font("Tahoma",Font.BOLD, 15));
@@ -171,7 +172,24 @@ public class Main
             }
 
         });
-		
+		JButton backBtn = new JButton("Back");
+		backBtn.setFont(new Font("Tahoma",Font.BOLD, 15));
+		backBtn.setForeground(Color.decode("#E0F7FA"));
+		backBtn.setBackground(Color.decode("#004D40"));
+		backBtn.setFocusPainted(false);
+		backBtn.setBorderPainted(true);
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btn7.setBackground(Color.decode("#00796B"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btn7.setBackground(Color.decode("#004D40"));
+			}
+
+		});
+
 		JButton whitespace = new JButton("");
 
 		JTextField addProductName = new JTextField();
@@ -216,10 +234,6 @@ public class Main
 		TextPanel.add(addProductPrice);
 		TextPanel.add(productQuantity);
 		TextPanel.add(addProductQuantity);
-		//TextPanel.add(updateProduct);
-
-		//panel1.add(whitespace);
-		//panel1.add(whitespace);
 
 		JPanel ButtonPanel = new JPanel();
 		BoxLayout boxlayout2 = new BoxLayout(ButtonPanel, BoxLayout.Y_AXIS); 
@@ -245,6 +259,31 @@ public class Main
 		projManagement.setTitle("Smart Shop Management System");
 		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
+
+
+		JButton showProducts = new JButton("Show Products");
+		JTextArea products2 = new JTextArea();
+		JScrollPane products2ScrollPane = new JScrollPane(products2);
+
+		JPanel salePanel = new JPanel();
+		JPanel saleTextPanel = new JPanel();
+		saleTextPanel.setBackground(Color.decode("#B2DFDB"));
+		saleTextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		saleTextPanel.setLayout(new BoxLayout(saleTextPanel, BoxLayout.Y_AXIS));
+
+		saleTextPanel.add(products2ScrollPane);
+		salePanel.add(backBtn);
+		salePanel.add(showProducts);
+
+		JPanel mainSalePanel = new JPanel(new BorderLayout());
+		mainSalePanel.setBackground(Color.decode("#B2DFDB"));
+		mainSalePanel.add(salePanel, BorderLayout.NORTH);
+		mainSalePanel.add(saleTextPanel, BorderLayout.CENTER);
+		recordSales.add(mainSalePanel);
+		recordSales.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		recordSales.setTitle("Smart Shop Management System");
+		recordSales.setSize(750,500);
+		recordSales.setLocationRelativeTo(null);
 
 		menu.setVisible(true);
 		projManagement.setVisible(false);
@@ -287,7 +326,9 @@ public class Main
 				{
 					String productName = addProductName.getText();
 					String productPrice = addProductPrice.getText();
-					String productQuantity = addProductQuantity.getText();
+					String productQuantityTxt = addProductQuantity.getText();
+
+					int productQuantity = Integer.parseInt(productQuantityTxt);
 
 					Product product = new Product(productName, productPrice, productQuantity);
 
@@ -313,6 +354,28 @@ public class Main
 
 			}
 		});
+		btn2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				recordSales.setVisible(true);
+			}
+		});
+		backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(true);
+				recordSales.setVisible(false);
+			}
+		});
+		showProducts.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String stockList = inventoryManagement.printStock();
+				products2.setText(stockList);
+			}
+		});
+
 	}
 		
 }
