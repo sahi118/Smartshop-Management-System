@@ -13,35 +13,84 @@ public class Main
 		
 		JButton btn1 = new JButton("Manage Inventory");
 		btn1.setFont(new Font("Tahoma",Font.BOLD, 15));
-		btn1.setForeground(Color.WHITE);
-		btn1.setBackground(Color.DARK_GRAY);
+		btn1.setForeground(Color.decode("#E0F7FA"));
+		btn1.setBackground(Color.decode("#004D40"));
 		btn1.setFocusPainted(false);
 		btn1.setBorderPainted(true);
+		btn1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn1.setBackground(Color.decode("#00796B")); // Button colour changes darker upon hovering
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn1.setBackground(Color.decode("#004D40")); // Resets hover colour to original
+            }
+
+        });
+		
 		JButton btn2 = new JButton("Record Sales");
 		btn2.setFont(new Font("Tahoma",Font.BOLD, 15));
-		btn2.setForeground(Color.WHITE);
-		btn2.setBackground(Color.DARK_GRAY);
+		btn2.setForeground(Color.decode("#E0F7FA"));
+		btn2.setBackground(Color.decode("#004D40"));
 		btn2.setFocusPainted(false);
 		btn2.setBorderPainted(true);
+		btn2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn2.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn2.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton btn3 = new JButton("Generate Report");
 		btn3.setFont(new Font("Tahoma",Font.BOLD, 15));
-		btn3.setForeground(Color.WHITE);
-		btn3.setBackground(Color.DARK_GRAY);
+		btn3.setForeground(Color.decode("#E0F7FA"));
+		btn3.setBackground(Color.decode("#004D40"));
 		btn3.setFocusPainted(false);
 		btn3.setBorderPainted(true);
+		btn3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn3.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn3.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton buttonExit = new JButton("Quit");
 		buttonExit.setFont(new Font("Tahoma",Font.BOLD, 15));
-		buttonExit.setForeground(Color.WHITE);
-		buttonExit.setBackground(Color.DARK_GRAY);
+		buttonExit.setForeground(Color.decode("#E0F7FA"));
+		buttonExit.setBackground(Color.decode("#004D40"));
 		buttonExit.setFocusPainted(false);
 		buttonExit.setBorderPainted(true);
+		buttonExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                buttonExit.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                buttonExit.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.decode("#B2DFDB"));
 		panel.setLayout(new GridLayout(5,3,50,10));
 		JLabel labelTitle = new JLabel("Title");
 		labelTitle.setText("Smart Shop Management System");
 		labelTitle.setHorizontalAlignment(JLabel.CENTER);
 		labelTitle.setFont(new Font("Tahoma",Font.BOLD, 15));
+		labelTitle.setForeground(Color.decode("#004D40"));
 		panel.add(labelTitle);
 		panel.add(btn1);
 		panel.add(btn2);
@@ -51,30 +100,78 @@ public class Main
 		JButton btn4 = new JButton("Add Product     ");
 		btn4.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn4.setPreferredSize(new Dimension(200, 200));
-		btn4.setForeground(Color.WHITE);
-		btn4.setBackground(Color.DARK_GRAY);
+		btn4.setForeground(Color.decode("#E0F7FA"));
+		btn4.setBackground(Color.decode("#004D40"));
 		btn4.setFocusPainted(false);
 		btn4.setBorderPainted(true);
+		btn4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn4.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn4.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton btn5 = new JButton("Update Product");
 		btn5.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn5.setPreferredSize(new Dimension(200, 200));
-		btn5.setForeground(Color.WHITE);
-		btn5.setBackground(Color.DARK_GRAY);
+		btn5.setForeground(Color.decode("#E0F7FA"));
+		btn5.setBackground(Color.decode("#004D40"));
 		btn5.setFocusPainted(false);
 		btn5.setBorderPainted(true);
+		btn5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn5.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn5.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton btn6 = new JButton("Delete Product ");
 		btn6.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn6.setPreferredSize(new Dimension(200, 200));
-		btn6.setForeground(Color.WHITE);
-		btn6.setBackground(Color.DARK_GRAY);
+		btn6.setForeground(Color.decode("#E0F7FA"));
+		btn6.setBackground(Color.decode("#004D40"));
 		btn6.setFocusPainted(false);
 		btn6.setBorderPainted(true);
+		btn6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn6.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn6.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton btn7 = new JButton("Back");
 		btn7.setFont(new Font("Tahoma",Font.BOLD, 15));
-		btn7.setForeground(Color.WHITE);
-		btn7.setBackground(Color.DARK_GRAY);
+		btn7.setForeground(Color.decode("#E0F7FA"));
+		btn7.setBackground(Color.decode("#004D40"));
 		btn7.setFocusPainted(false);
 		btn7.setBorderPainted(true);
+		btn7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn7.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn7.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
+		
 		JButton whitespace = new JButton("");
 
 		JTextField addProductName = new JTextField();
@@ -86,6 +183,7 @@ public class Main
 		inventoryManagement.printStock();
 
 		JPanel panel1 = new JPanel();
+		panel1.setBackground(Color.decode("#B2DFDB"));
 		panel1.setLayout(new BorderLayout());
 		JLabel managementTitle = new JLabel("Title");
 		JLabel productList = new JLabel("Product List");
@@ -99,6 +197,7 @@ public class Main
 		managementTitle.setText("Product Management Centre");
 		managementTitle.setHorizontalAlignment(JLabel.CENTER);
 		managementTitle.setFont(new Font("Tahoma",Font.BOLD, 15));
+		managementTitle.setForeground(Color.decode("#004D40"));
 		
 		panel1.add(managementTitle, BorderLayout.NORTH);
 		panel1.add(productName, BorderLayout.WEST);
@@ -108,6 +207,7 @@ public class Main
 		BoxLayout boxlayout1 = new BoxLayout(TextPanel, BoxLayout.Y_AXIS); 
 		TextPanel.setLayout(boxlayout1);
 		TextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		TextPanel.setBackground(Color.decode("#B2DFDB"));
 		TextPanel.add(productList);
 		TextPanel.add(productsScrollPane);
 		TextPanel.add(productName);
@@ -125,6 +225,7 @@ public class Main
 		BoxLayout boxlayout2 = new BoxLayout(ButtonPanel, BoxLayout.Y_AXIS); 
 		ButtonPanel.setLayout(boxlayout2);
 		ButtonPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+		ButtonPanel.setBackground(Color.decode("#B2DFDB"));
 		ButtonPanel.add(btn4);
 		ButtonPanel.add(btn5);
 		ButtonPanel.add(btn6);
@@ -145,10 +246,9 @@ public class Main
 		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
 
-
 		menu.setVisible(true);
 		projManagement.setVisible(false);
-
+		
 		buttonExit.addActionListener(new ActionListener()
 		{
 			@Override
