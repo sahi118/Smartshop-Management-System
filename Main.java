@@ -27,6 +27,7 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn1.setBackground(Color.decode("#004D40")); // Resets hover colour to original
             }
+
         });
 		
 		JButton btn2 = new JButton("Record Sales");
@@ -62,6 +63,7 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn3.setBackground(Color.decode("#004D40")); 
             }
+
         });
 		
 		JButton buttonExit = new JButton("Quit");
@@ -70,6 +72,17 @@ public class Main
 		buttonExit.setBackground(Color.decode("#004D40"));
 		buttonExit.setFocusPainted(false);
 		buttonExit.setBorderPainted(true);
+		buttonExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                buttonExit.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                buttonExit.setBackground(Color.decode("#004D40")); 
+            }
+
+        });
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.decode("#B2DFDB"));
@@ -101,7 +114,10 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn4.setBackground(Color.decode("#004D40")); 
             }
-        });		
+
+        });
+		
+		
 		JButton btn6 = new JButton("Clear Product List");
 		btn6.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn6.setPreferredSize(new Dimension(200, 200));
@@ -118,7 +134,9 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn6.setBackground(Color.decode("#004D40")); 
             }
+
         });
+		
 		JButton btn7 = new JButton("Back");
 		btn7.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn7.setForeground(Color.decode("#E0F7FA"));
@@ -134,6 +152,7 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn7.setBackground(Color.decode("#004D40")); 
             }
+
         });
 		JButton backBtn = new JButton("Back");
 		backBtn.setFont(new Font("Tahoma",Font.BOLD, 15));
@@ -150,11 +169,14 @@ public class Main
 			public void mouseExited(MouseEvent e) {
 				btn7.setBackground(Color.decode("#004D40"));
 			}
+
 		});
+
 
 		JTextField addProductName = new JTextField();
 		JTextField addProductPrice = new JTextField();
 		JTextField addProductQuantity = new JTextField();
+		//JTextField updateProduct = new JTextField();
 
 		InventoryManagement inventoryManagement = new InventoryManagement();
 		inventoryManagement.printStock();
@@ -218,6 +240,7 @@ public class Main
 		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
 
+
 		JButton showProducts = new JButton("Show Products");
 		JTextArea products2 = new JTextArea();
 		JScrollPane products2ScrollPane = new JScrollPane(products2);
@@ -277,19 +300,16 @@ public class Main
                     menu.setVisible(true);
                 });
 		btn6.addActionListener((ActionEvent e) -> {
-					//clear
-					if (JOptionPane.showConfirmDialog(null,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-           			{
-               			products.setText("");
-					}
-                });
+			//clear
+			if (JOptionPane.showConfirmDialog(null,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+			   {
+				   products.setText("");
+			}
+		});
 		btn2.addActionListener((ActionEvent e) -> {
                     menu.setVisible(false);
                     recordSales.setVisible(true);
                 });
-		btn3.addActionListener((ActionEvent e) -> {
-				SalesRecord.fileGeneration(args);
-				});
 		backBtn.addActionListener((ActionEvent e) -> {
                     menu.setVisible(true);
                     recordSales.setVisible(false);
