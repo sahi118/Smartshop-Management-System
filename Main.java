@@ -176,7 +176,6 @@ public class Main
 		JTextField addProductName = new JTextField();
 		JTextField addProductPrice = new JTextField();
 		JTextField addProductQuantity = new JTextField();
-		//JTextField updateProduct = new JTextField();
 
 		InventoryManagement inventoryManagement = new InventoryManagement();
 		inventoryManagement.printStock();
@@ -289,10 +288,13 @@ public class Main
                         String productPrice1 = addProductPrice.getText();
                         String productQuantityTxt = addProductQuantity.getText();
                         int productQuantity1 = Integer.parseInt(productQuantityTxt);
-                        Product product = new Product(productName1, productPrice1, productQuantity1);
+                        Product product = new Product(productName1, productPrice1, productQuantityTxt);
                         inventoryManagement.addProduct(product);
                         String stockList = inventoryManagement.printStock();
                         products.setText(stockList);
+						addProductName.setText("");
+						addProductPrice.setText("");
+						addProductQuantity.setText("");
                     }
                 });
 		btn7.addActionListener((ActionEvent e) -> {
@@ -301,7 +303,8 @@ public class Main
                 });
 		btn6.addActionListener((ActionEvent e) -> {
 			//clear
-			if (JOptionPane.showConfirmDialog(null,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+			JFrame ClearFrame = new JFrame("Clear Product List");
+			if (JOptionPane.showConfirmDialog(ClearFrame,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
 			   {
 				   products.setText("");
 			}
