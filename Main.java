@@ -27,7 +27,6 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn1.setBackground(Color.decode("#004D40")); // Resets hover colour to original
             }
-
         });
 		
 		JButton btn2 = new JButton("Record Sales");
@@ -45,7 +44,6 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn2.setBackground(Color.decode("#004D40")); 
             }
-
         });
 		
 		JButton btn3 = new JButton("Generate Report");
@@ -63,7 +61,6 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn3.setBackground(Color.decode("#004D40")); 
             }
-
         });
 		
 		JButton buttonExit = new JButton("Quit");
@@ -81,7 +78,6 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 buttonExit.setBackground(Color.decode("#004D40")); 
             }
-
         });
 		
 		JPanel panel = new JPanel();
@@ -98,7 +94,7 @@ public class Main
 		panel.add(btn3);
 		panel.add(buttonExit);
 
-		JButton btn4 = new JButton("    Add Product     ");
+		JButton btn4 = new JButton("Add New Product");
 		btn4.setFont(new Font("Tahoma",Font.BOLD, 15));
 		btn4.setPreferredSize(new Dimension(200, 200));
 		btn4.setForeground(Color.decode("#E0F7FA"));
@@ -114,9 +110,7 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn4.setBackground(Color.decode("#004D40")); 
             }
-
         });
-		
 		
 		JButton btn6 = new JButton("Clear Product List");
 		btn6.setFont(new Font("Tahoma",Font.BOLD, 15));
@@ -134,7 +128,22 @@ public class Main
             public void mouseExited(MouseEvent e) {
                 btn6.setBackground(Color.decode("#004D40")); 
             }
-
+        });
+		JButton btnClr = new JButton("Clear Product List");
+		btnClr.setFont(new Font("Tahoma",Font.BOLD, 15));
+		btnClr.setForeground(Color.decode("#E0F7FA"));
+		btnClr.setBackground(Color.decode("#004D40"));
+		btnClr.setFocusPainted(false);
+		btnClr.setBorderPainted(true);
+		btnClr.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnClr.setBackground(Color.decode("#00796B"));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnClr.setBackground(Color.decode("#004D40")); 
+            }
         });
 		
 		JButton btn7 = new JButton("Back");
@@ -169,29 +178,26 @@ public class Main
 			public void mouseExited(MouseEvent e) {
 				btn7.setBackground(Color.decode("#004D40"));
 			}
-
 		});
-
 
 		JTextField addProductName = new JTextField();
 		JTextField addProductPrice = new JTextField();
 		JTextField addProductQuantity = new JTextField();
 
 		InventoryManagement inventoryManagement = new InventoryManagement();
-		inventoryManagement.printStock();
 
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.decode("#B2DFDB"));
 		panel1.setLayout(new BorderLayout());
 		JLabel managementTitle = new JLabel("Title");
-		JLabel productList = new JLabel("Product List");
 		JLabel productName = new JLabel("Product Name");
 		JLabel productPrice = new JLabel("Product Price");
 		JLabel productQuantity = new JLabel("Product Quantity");
-		JTextArea products = new JTextArea();
+		JPanel products = new JPanel();
+		products.setLayout(new FlowLayout());
 		products.setPreferredSize(new Dimension(100, 100));
-		products.setEditable(false);
-		JScrollPane productsScrollPane = new JScrollPane(products);
+		products.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
 		managementTitle.setText("Product Management Centre");
 		managementTitle.setHorizontalAlignment(JLabel.CENTER);
 		managementTitle.setFont(new Font("Tahoma",Font.BOLD, 15));
@@ -206,8 +212,6 @@ public class Main
 		TextPanel.setLayout(boxlayout1);
 		TextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
 		TextPanel.setBackground(Color.decode("#B2DFDB"));
-		TextPanel.add(productList);
-		TextPanel.add(productsScrollPane);
 		TextPanel.add(productName);
 		TextPanel.add(addProductName);
 		TextPanel.add(productPrice);
@@ -239,20 +243,14 @@ public class Main
 		projManagement.setSize(750,500);
 		projManagement.setLocationRelativeTo(null);
 
-
-		JButton showProducts = new JButton("Show Products");
-		JTextArea products2 = new JTextArea();
-		JScrollPane products2ScrollPane = new JScrollPane(products2);
-
 		JPanel salePanel = new JPanel();
 		JPanel saleTextPanel = new JPanel();
 		saleTextPanel.setBackground(Color.decode("#B2DFDB"));
 		saleTextPanel.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
 		saleTextPanel.setLayout(new BoxLayout(saleTextPanel, BoxLayout.Y_AXIS));
 
-		saleTextPanel.add(products2ScrollPane);
 		salePanel.add(backBtn);
-		salePanel.add(showProducts);
+		salePanel.add(btnClr);
 
 		JPanel mainSalePanel = new JPanel(new BorderLayout());
 		mainSalePanel.setBackground(Color.decode("#B2DFDB"));
@@ -277,24 +275,34 @@ public class Main
                     menu.setVisible(false);
                 });
 		btn4.addActionListener((ActionEvent e) -> {
-                    if (addProductName.getText().isEmpty()) {
+                    if (addProductName.getText().isEmpty())
+					{
                         JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
-                    } else if (addProductPrice.getText().isEmpty()) {
+                    } 
+					else if (addProductPrice.getText().isEmpty()) 
+					{
                         JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
-                    } else if (addProductQuantity.getText().isEmpty()) {
+                    } 
+					else if (addProductQuantity.getText().isEmpty()) 
+					{
                         JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
-                    } else {
-                        String productName1 = addProductName.getText();
-                        String productPrice1 = addProductPrice.getText();
-                        String productQuantityTxt = addProductQuantity.getText();
-                        int productQuantity1 = Integer.parseInt(productQuantityTxt);
-                        Product product = new Product(productName1, productPrice1, productQuantityTxt);
-                        inventoryManagement.addProduct(product);
-                        String stockList = inventoryManagement.printStock();
-                        products.setText(stockList);
+                    } 
+					else 
+					{						
+						Product.ProductName = addProductName.getText();
+						Product.ProductPrice = addProductPrice.getText();
+						Product.ProductQuantity = addProductQuantity.getText();
+
 						addProductName.setText("");
 						addProductPrice.setText("");
 						addProductQuantity.setText("");
+				
+						Product product = new Product();
+						saleTextPanel.add(product);			
+
+						saleTextPanel.revalidate();
+
+						JOptionPane.showMessageDialog(null,"Product has been added");
                     }
                 });
 		btn7.addActionListener((ActionEvent e) -> {
@@ -305,8 +313,20 @@ public class Main
 			//clear
 			JFrame ClearFrame = new JFrame("Clear Product List");
 			if (JOptionPane.showConfirmDialog(ClearFrame,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-			   {
-				   products.setText("");
+			{
+				saleTextPanel.removeAll();
+				saleTextPanel.revalidate();
+				saleTextPanel.repaint();
+			}
+		});
+		btnClr.addActionListener((ActionEvent e) -> {
+			//clear
+			JFrame ClearFrame = new JFrame("Clear Product List");
+			if (JOptionPane.showConfirmDialog(ClearFrame,"Are you sure you want to clear the product list?","",JOptionPane.WARNING_MESSAGE , JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+			{
+				saleTextPanel.removeAll();
+				saleTextPanel.revalidate();
+				saleTextPanel.repaint();
 			}
 		});
 		btn2.addActionListener((ActionEvent e) -> {
@@ -317,11 +337,8 @@ public class Main
                     menu.setVisible(true);
                     recordSales.setVisible(false);
                 });
-		showProducts.addActionListener((ActionEvent e) -> {
-                    String stockList = inventoryManagement.printStock();
-                    products2.setText(stockList);
-                });
-
+		btn3.addActionListener((ActionEvent e) -> {
+			SalesRecord.fileGeneration(args);
+		});
 	}
-		
 }
