@@ -1,10 +1,14 @@
 package smartshopManagement;
 import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.*;
 
 public class SalesRecord
 {
     public static void fileGeneration(String[] args)
     {
+        JOptionPane.showMessageDialog(null,"Report has been generated");
+        
         try 
         {
             FileWriter myWriter = new FileWriter("New Report.txt");
@@ -13,8 +17,9 @@ public class SalesRecord
             myWriter.write("");
             myWriter.close();
         } 
-        catch (Exception e)
+        catch (IOException e)
         {
+            
         }
         
     } 
