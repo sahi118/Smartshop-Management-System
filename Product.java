@@ -2,6 +2,7 @@ package smartshopManagement;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.*;
 
 public class Product extends JPanel
 {
@@ -11,6 +12,8 @@ public class Product extends JPanel
     public static String ProductQuantity;
 
     //Sales Page
+    public String ProductQuantityString;
+    public int ProductQuantityInt;
     public String TotalSales;
     public JButton AddProduct;
     public JButton AddSales;
@@ -26,15 +29,15 @@ public class Product extends JPanel
         this.setLayout(new FlowLayout());
 
 		JLabel productNameTitle = new JLabel("Name:");
-        JLabel ProductName = new JLabel();
+        JLabel ProductName = new JLabel(Product.ProductName);
 		JLabel productPriceTitle = new JLabel("£");
-        JLabel ProductPrice = new JLabel();
+        JLabel ProductPrice = new JLabel(Product.ProductPrice);
 		JLabel productQuantityTitle = new JLabel("Amt:");
-        JLabel ProductQuantity = new JLabel();
+        JLabel ProductQuantity = new JLabel(Product.ProductQuantity);
         JLabel TotalSalesTitle = new JLabel("Total Sales:");
         JLabel TotalSales = new JLabel("0");
 
-        JButton AddProduct = new JButton("Increase Inventory");
+        JButton AddProduct = new JButton("Increase Stock");
 		AddProduct.setFont(new Font("Tahoma",Font.BOLD, 10));
 		AddProduct.setForeground(Color.decode("#E0F7FA"));
 		AddProduct.setBackground(Color.decode("#004D40"));
@@ -51,7 +54,10 @@ public class Product extends JPanel
             }
         });
         AddProduct.addActionListener((ActionEvent e) -> {
-            //increase inventory
+            ProductQuantityString = ProductQuantity.getText();
+            int ProductQuantityInt = Integer.parseInt(ProductQuantityString);
+            
+
         });
 
         JButton AddSales = new JButton("Add Sale");
@@ -73,7 +79,7 @@ public class Product extends JPanel
         AddSales.addActionListener((ActionEvent e) -> {
             //add sales
         });
-
+       
         this.add(productNameTitle);
         this.add(ProductName);
         this.add(productPriceTitle);
