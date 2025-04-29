@@ -279,7 +279,7 @@ public class Main
 					{
                         JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
                     } 
-					else if (addProductPrice.getText().isEmpty()) 
+					else if (addProductPrice.getText().isEmpty()) 		
 					{
                         JOptionPane.showMessageDialog(null,"Fields cannot be empty!");
                     } 
@@ -291,7 +291,7 @@ public class Main
 					{						
 						Product.ProductName = addProductName.getText();
 						Product.ProductPrice = addProductPrice.getText();
-						Product.ProductQuantity = addProductQuantity.getText();
+						Product.ProductQuantity = addProductQuantity.getText();	
 
 						addProductName.setText("");
 						addProductPrice.setText("");
