@@ -2,7 +2,6 @@ package smartshopManagement;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 public class Product extends JPanel
 {
@@ -11,7 +10,18 @@ public class Product extends JPanel
     public static String ProductPrice;
     public static String ProductQuantity;
 
-    //Sales Page
+    public static String NewQuantityString;
+    public static int NewQuantityInt;
+    public static int NewQuanityTotalInt;
+    public static int NewQuanityTotalString;
+
+    public static String NewSaleString;
+    public static int NewSaleInt;
+    public static String CurrentQuanityString;
+    public static int CurrentQuanityInt;
+    public static String NewSaleTotalString;
+    public static int NewSaleTotalInt; 
+
     public String ProductQuantityString;
     public int ProductQuantityInt;
     public String TotalSales;
@@ -23,7 +33,7 @@ public class Product extends JPanel
 
     Product()
     {
-        this.setPreferredSize(new Dimension(400,40));
+        this.setPreferredSize(new Dimension(100,40));
         this.setBackground(Color.decode("#E0F7FA"));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setLayout(new FlowLayout());
@@ -54,10 +64,29 @@ public class Product extends JPanel
             }
         });
         AddProduct.addActionListener((ActionEvent e) -> {
-            ProductQuantityString = ProductQuantity.getText();
-            int ProductQuantityInt = Integer.parseInt(ProductQuantityString);
             
-
+            JFrame AddStock = new JFrame("Add Stock");
+            JTextArea StockTitle = new JTextArea();
+            JTextField NewStock = new JTextField();
+            Object[] TextFields = {"Add Stock:", NewStock};   
+            ProductQuantityString = ProductQuantity.getText();
+            int ProductQuantityInt = Integer.parseInt(ProductQuantityString);         
+            NewQuantityString = NewStock.getText();
+            int NewQuantityInt = Integer.parseInt(NewQuantityString);
+            int NewQuantityTotalInt = ProductQuantityInt + NewQuantityInt;
+            String NewQuantityTotalString = Integer.toString(NewQuantityTotalInt);        
+            if (JOptionPane.showConfirmDialog(StockTitle, TextFields, "Add Stock", JOptionPane.CANCEL_OPTION)==JOptionPane.YES_OPTION)
+            {
+                if (NewStock.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"Field cannot be empty!");          
+                }
+                else
+                {
+                    ProductQuantity.setText(NewQuantityTotalString);
+                    this.revalidate();
+                }
+            };
         });
 
         JButton AddSales = new JButton("Add Sale");
@@ -76,9 +105,32 @@ public class Product extends JPanel
                 AddSales.setBackground(Color.decode("#004D40")); 
             }
         });
-        AddSales.addActionListener((ActionEvent e) -> {
-            //add sales
-        });
+        /*AddSales.addActionListener((ActionEvent e) -> {
+            JFrame AddSalesFrame = new JFrame("Sales");
+            JTextArea SalesTitle = new JTextArea();
+            JTextField NewSale = new JTextField();
+            Object[] TextFields = {"Sales:", NewSale};
+            NewSaleString = NewSale.getText();
+            int NewSaleInt = Integer.parseInt(NewSaleString);
+            CurrentQuanityString = ProductQuantity.getText();
+            int CurrentQuanityInt = Integer.parseInt(CurrentQuanityString);
+
+            if (JOptionPane.showConfirmDialog(SalesTitle, TextFields, "New Sale", JOptionPane.CANCEL_OPTION)==JOptionPane.YES_OPTION)
+            {
+                if (NewSale.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"Field cannot be empty!");          
+                }
+                else if (CurrentQuanityInt > NewSaleInt)
+                {
+                    JOptionPane.showMessageDialog(null,"Sale cannot exceed total product amount!");
+                }
+                else
+                {       
+
+                }
+            };
+        });*/
        
         this.add(productNameTitle);
         this.add(ProductName);
