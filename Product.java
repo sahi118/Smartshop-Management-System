@@ -151,4 +151,6 @@ public class Product extends JPanel
         this.add(AddProduct);
         this.add(AddSales);
     }
+
+
 }
