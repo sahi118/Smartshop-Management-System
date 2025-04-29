@@ -15,7 +15,7 @@ public class Product extends JPanel
     public static int NewQuanityTotalInt;
     public static int NewQuanityTotalString;
 
-    public static String NewSaleString;
+    public String NewSaleString;
     public static int NewSaleInt;
     public static String CurrentQuanityString;
     public static int CurrentQuanityInt;
@@ -63,18 +63,14 @@ public class Product extends JPanel
                 AddProduct.setBackground(Color.decode("#004D40")); 
             }
         });
-        AddProduct.addActionListener((ActionEvent e) -> {
-            
+        AddProduct.addActionListener((ActionEvent e) -> {            
             JFrame AddStock = new JFrame("Add Stock");
-            JTextArea StockTitle = new JTextArea();
+            JTextArea StockTitle = new JTextArea("Add Stock");
             JTextField NewStock = new JTextField();
             Object[] TextFields = {"Add Stock:", NewStock};   
             ProductQuantityString = ProductQuantity.getText();
             int ProductQuantityInt = Integer.parseInt(ProductQuantityString);         
-            NewQuantityString = NewStock.getText();
-            int NewQuantityInt = Integer.parseInt(NewQuantityString);
-            int NewQuantityTotalInt = ProductQuantityInt + NewQuantityInt;
-            String NewQuantityTotalString = Integer.toString(NewQuantityTotalInt);        
+
             if (JOptionPane.showConfirmDialog(StockTitle, TextFields, "Add Stock", JOptionPane.CANCEL_OPTION)==JOptionPane.YES_OPTION)
             {
                 if (NewStock.getText().isEmpty())
@@ -83,6 +79,10 @@ public class Product extends JPanel
                 }
                 else
                 {
+                    NewQuantityString = NewStock.getText();
+                    int NewQuantityInt = Integer.parseInt(NewQuantityString);
+                    int NewQuantityTotalInt = ProductQuantityInt + NewQuantityInt;
+                    String NewQuantityTotalString = Integer.toString(NewQuantityTotalInt);
                     ProductQuantity.setText(NewQuantityTotalString);
                     this.revalidate();
                 }
@@ -105,32 +105,40 @@ public class Product extends JPanel
                 AddSales.setBackground(Color.decode("#004D40")); 
             }
         });
-        /*AddSales.addActionListener((ActionEvent e) -> {
+        AddSales.addActionListener((ActionEvent e) -> {
             JFrame AddSalesFrame = new JFrame("Sales");
             JTextArea SalesTitle = new JTextArea();
             JTextField NewSale = new JTextField();
-            Object[] TextFields = {"Sales:", NewSale};
-            NewSaleString = NewSale.getText();
-            int NewSaleInt = Integer.parseInt(NewSaleString);
-            CurrentQuanityString = ProductQuantity.getText();
-            int CurrentQuanityInt = Integer.parseInt(CurrentQuanityString);
+            Object[] TextFields = {"Sales:", NewSale}; 
 
             if (JOptionPane.showConfirmDialog(SalesTitle, TextFields, "New Sale", JOptionPane.CANCEL_OPTION)==JOptionPane.YES_OPTION)
             {
+                NewSaleString = NewSale.getText();
+                int NewSaleInt = Integer.parseInt(NewSaleString);
+                CurrentQuanityString = ProductQuantity.getText();
+                int CurrentQuanityInt = Integer.parseInt(CurrentQuanityString);
+
+                
                 if (NewSale.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(null,"Field cannot be empty!");          
                 }
-                else if (CurrentQuanityInt > NewSaleInt)
+                else if (CurrentQuanityInt < NewSaleInt)
                 {
                     JOptionPane.showMessageDialog(null,"Sale cannot exceed total product amount!");
                 }
                 else
-                {       
-
+                {   
+                    CurrentQuanityInt = CurrentQuanityInt - NewSaleInt;
+                    NewSaleTotalInt = NewSaleTotalInt + NewSaleInt;
+                    String CurrentQuanityString = Integer.toString(CurrentQuanityInt);
+                    ProductQuantity.setText(CurrentQuanityString);
+                    String NewSaleTotalString = Integer.toString(NewSaleTotalInt);
+                    TotalSales.setText(NewSaleTotalString);
+                    this.revalidate();
                 }
             };
-        });*/
+        });
        
         this.add(productNameTitle);
         this.add(ProductName);
