@@ -1,4 +1,4 @@
-#Smart Shop Management System - Team Alpine
+Smart Shop Management System - Team Alpine
 
 How to Run:
 The Application is run through an editor such as Visual Studio by running the main file.
