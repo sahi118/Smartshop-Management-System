@@ -1,8 +1,8 @@
-package smartshopManagement;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.*;
 
 public class Main
 {
@@ -11,6 +11,8 @@ public class Main
 		JFrame menu = new JFrame();
 		JFrame projManagement = new JFrame();
 		JFrame recordSales =  new JFrame();
+
+		java.util.List<String> reportEntries = new java.util.ArrayList<>();
 		
 		JButton btn1 = new JButton("Manage Inventory");
 		btn1.setFont(new Font("Tahoma",Font.BOLD, 15));
@@ -184,8 +186,6 @@ public class Main
 		JTextField addProductPrice = new JTextField();
 		JTextField addProductQuantity = new JTextField();
 
-		InventoryManagement inventoryManagement = new InventoryManagement();
-
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.decode("#B2DFDB"));
 		panel1.setLayout(new BorderLayout());
@@ -303,6 +303,9 @@ public class Main
 						saleTextPanel.revalidate();
 
 						JOptionPane.showMessageDialog(null,"Product has been added");
+
+						String entry = "Name: " + Product.ProductName + ", Price: " + Product.ProductPrice + ", Quantity: " + Product.ProductQuantity;
+						reportEntries.add(entry);
                     }
                 });
 		btn7.addActionListener((ActionEvent e) -> {
@@ -338,7 +341,21 @@ public class Main
                     recordSales.setVisible(false);
                 });
 		btn3.addActionListener((ActionEvent e) -> {
-			SalesRecord.fileGeneration(args);
+			Component[] productComponents = saleTextPanel.getComponents();
+
+			if (productComponents.length == 0) {
+				JOptionPane.showMessageDialog(null,"No products to add to report");
+				return;
+			}
+
+			String[] report = new String[productComponents.length + 2];
+			report[0] = "Sales Report";
+			for (int i = 0; i < productComponents.length; i++) {
+				Product p = (Product) productComponents[i];
+				report[i + 1] = p.toString();
+			}
+			report[report.length - 1] = "==============";
+			SalesRecord.fileGeneration(reportEntries);
 		});
 	}
 }
