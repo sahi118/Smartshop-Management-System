@@ -1,4 +1,3 @@
-package smartshopManagement;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -152,5 +151,7 @@ public class Product extends JPanel
         this.add(AddSales);
     }
 
-
+    public String toString() {
+        return "Name: " + ProductName + ", Price: " + ProductPrice + ", Quantity: " + ProductQuantity;
+    }
 }
